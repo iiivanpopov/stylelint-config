@@ -1,54 +1,58 @@
 {
   "name": "@yelaiii/stylelint",
-  "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": false,
-  "packageManager": "pnpm@10.18.1",
   "description": "Stylelint config",
-  "author": "iiivanpopov",
-  "license": "ISC",
   "keywords": [
-    "stylelint",
     "config",
+    "css",
     "sort",
-    "css"
+    "stylelint"
   ],
+  "license": "ISC",
+  "author": "iiivanpopov",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "check": "pnpm eslint .",
     "build": "tsdown --dts",
-    "prepublishOnly": "pnpm build",
+    "lint": "oxlint --type-aware",
+    "fmt": "oxfmt",
+    "prepublishOnly": "build",
     "prepare": "husky"
-  },
-  "peerDependencies": {
-    "stylelint": "^16.25.0",
-    "stylelint-config-standard": "^39.0.1",
-    "stylelint-order": "^7.0.0"
   },
   "dependencies": {
     "local-pkg": "^1.1.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.4.1",
-    "@types/node": "^24.7.0",
-    "eslint": "^9.37.0",
+    "@types/node": "^25.1.0",
+    "@typescript/native-preview": "7.0.0-dev.20260129.1",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.3",
-    "tsdown": "^0.15.6",
-    "typescript": "^5.9.3"
+    "lint-staged": "^16.2.7",
+    "oxfmt": "^0.27.0",
+    "oxlint": "^1.42.0",
+    "oxlint-tsgolint": "^0.11.3",
+    "tsdown": "^0.20.1"
+  },
+  "peerDependencies": {
+    "stylelint": "^16.25.0",
+    "stylelint-config-recess-order": "^7.6.0",
+    "stylelint-config-recommended": "^18.0.0",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-order": "^7.0.0"
   },
   "lint-staged": {
-    "*": "pnpm eslint --fix"
+    "*": "pnpm oxfmt --no-error-on-unmatched-pattern",
+    "*.ts": "pnpm lint"
   }
 }
