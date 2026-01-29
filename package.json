@@ -28,7 +28,7 @@
     "build": "tsdown --dts",
     "lint": "oxlint --type-aware",
     "fmt": "oxfmt",
-    "prepublishOnly": "build",
+    "prepublishOnly": "pnpm build",
     "prepare": "husky"
   },
   "dependencies": {
