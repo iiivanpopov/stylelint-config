@@ -6,7 +6,7 @@ export function stylelint(config: StylelintConfig = {}): StylelintConfig {
       'stylelint-config-standard',
       'stylelint-config-recommended',
       'stylelint-config-recess-order',
-      ...(Array.isArray(config.extends) ? config.extends : []),
+      ...(Array.isArray(config.extends) ? config.extends : config.extends ? [config.extends] : []),
     ],
     rules: {
       'at-rule-no-unknown': null,
